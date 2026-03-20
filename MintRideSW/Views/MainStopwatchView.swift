@@ -88,106 +88,109 @@ struct MainStopwatchView: View {
                             )
                         }
 
-                        LazyVGrid(
-                            columns: [
-                                GridItem(.flexible(), spacing: 12),
-                                GridItem(.flexible(), spacing: 12)
-                            ],
-                            spacing: 12
-                        ) {
-                            MetricTile(
-                                title: "Speed",
-                                value: "\(TelemetryFormatter.speed(telemetryManager.currentSpeedMPS, unit: settings.unit)) \(settings.unit.speedUnitTitle)",
-                                subtitle: telemetryManager.isRunActive ? "Run active" : "Waiting for launch"
-                            )
+                        HStack(alignment: .top, spacing: 12) {
+                            VStack(spacing: 12) {
+                                MetricTile(
+                                    title: "Accel",
+                                    value: TelemetryFormatter.gForce(telemetryManager.accelerationG),
+                                    subtitle: "Peak \(TelemetryFormatter.gForce(telemetryManager.peakAccelerationG))",
+                                    holdProgress: holdProgress(for: .peakAcceleration)
+                                )
+                                .onLongPressGesture(
+                                    minimumDuration: 1,
+                                    maximumDistance: 30,
+                                    pressing: { isPressing in
+                                        handleHoldChange(
+                                            isPressing: isPressing,
+                                            target: .peakAcceleration,
+                                            warning: "Keep holding to reset peak acceleration."
+                                        )
+                                    },
+                                    perform: {
+                                        telemetryManager.resetPeakAcceleration()
+                                        clearHoldState()
+                                    }
+                                )
 
-                            MetricTile(
-                                title: "Distance",
-                                value: "\(TelemetryFormatter.distance(telemetryManager.sessionDistanceMeters, unit: settings.unit)) \(settings.unit.distanceUnitTitle)",
-                                subtitle: "Hold to reset",
-                                holdProgress: holdProgress(for: .distance)
-                            )
-                            .onLongPressGesture(
-                                minimumDuration: 1,
-                                maximumDistance: 30,
-                                pressing: { isPressing in
-                                    handleHoldChange(
-                                        isPressing: isPressing,
-                                        target: .distance,
-                                        warning: "Keep holding to reset session distance."
-                                    )
-                                },
-                                perform: {
-                                    telemetryManager.resetDistanceSession()
-                                    clearHoldState()
-                                }
-                            )
+                                MetricTile(
+                                    title: "Cornering",
+                                    value: TelemetryFormatter.gForce(telemetryManager.corneringG),
+                                    subtitle: "Peak \(TelemetryFormatter.gForce(telemetryManager.peakCorneringG))",
+                                    holdProgress: holdProgress(for: .peakCornering)
+                                )
+                                .onLongPressGesture(
+                                    minimumDuration: 1,
+                                    maximumDistance: 30,
+                                    pressing: { isPressing in
+                                        handleHoldChange(
+                                            isPressing: isPressing,
+                                            target: .peakCornering,
+                                            warning: "Keep holding to reset peak cornering G."
+                                        )
+                                    },
+                                    perform: {
+                                        telemetryManager.resetPeakCornering()
+                                        clearHoldState()
+                                    }
+                                )
+                            }
+                            .frame(maxWidth: .infinity)
 
-                            MetricTile(
-                                title: "Peak",
-                                value: "\(TelemetryFormatter.speed(telemetryManager.peakSpeedMPS, unit: settings.unit)) \(settings.unit.speedUnitTitle)",
-                                subtitle: "Hold to reset",
-                                holdProgress: holdProgress(for: .peakSpeed)
-                            )
-                            .onLongPressGesture(
-                                minimumDuration: 1,
-                                maximumDistance: 30,
-                                pressing: { isPressing in
-                                    handleHoldChange(
-                                        isPressing: isPressing,
-                                        target: .peakSpeed,
-                                        warning: "Keep holding to reset peak speed."
-                                    )
-                                },
-                                perform: {
-                                    telemetryManager.resetPeakSpeed()
-                                    clearHoldState()
-                                }
-                            )
+                            VStack(spacing: 12) {
+                                MetricTile(
+                                    title: "Distance",
+                                    value: "\(TelemetryFormatter.distance(telemetryManager.sessionDistanceMeters, unit: settings.unit)) \(settings.unit.distanceUnitTitle)",
+                                    subtitle: "Hold to reset",
+                                    holdProgress: holdProgress(for: .distance)
+                                )
+                                .onLongPressGesture(
+                                    minimumDuration: 1,
+                                    maximumDistance: 30,
+                                    pressing: { isPressing in
+                                        handleHoldChange(
+                                            isPressing: isPressing,
+                                            target: .distance,
+                                            warning: "Keep holding to reset session distance."
+                                        )
+                                    },
+                                    perform: {
+                                        telemetryManager.resetDistanceSession()
+                                        clearHoldState()
+                                    }
+                                )
 
-                            MetricTile(
-                                title: "Accel",
-                                value: TelemetryFormatter.gForce(telemetryManager.accelerationG),
-                                subtitle: "Peak \(TelemetryFormatter.gForce(telemetryManager.peakAccelerationG))",
-                                holdProgress: holdProgress(for: .peakAcceleration)
-                            )
-                            .onLongPressGesture(
-                                minimumDuration: 1,
-                                maximumDistance: 30,
-                                pressing: { isPressing in
-                                    handleHoldChange(
-                                        isPressing: isPressing,
-                                        target: .peakAcceleration,
-                                        warning: "Keep holding to reset peak acceleration."
-                                    )
-                                },
-                                perform: {
-                                    telemetryManager.resetPeakAcceleration()
-                                    clearHoldState()
-                                }
-                            )
+                                MetricTile(
+                                    title: "Peak Speed",
+                                    value: "\(TelemetryFormatter.speed(telemetryManager.peakSpeedMPS, unit: settings.unit)) \(settings.unit.speedUnitTitle)",
+                                    subtitle: "Hold to reset",
+                                    valueColor: speedThresholdColor(for: telemetryManager.peakSpeedMPS),
+                                    holdProgress: holdProgress(for: .peakSpeed)
+                                )
+                                .onLongPressGesture(
+                                    minimumDuration: 1,
+                                    maximumDistance: 30,
+                                    pressing: { isPressing in
+                                        handleHoldChange(
+                                            isPressing: isPressing,
+                                            target: .peakSpeed,
+                                            warning: "Keep holding to reset peak speed."
+                                        )
+                                    },
+                                    perform: {
+                                        telemetryManager.resetPeakSpeed()
+                                        clearHoldState()
+                                    }
+                                )
+                            }
+                            .frame(maxWidth: .infinity)
                         }
 
                         MetricTile(
-                            title: "Cornering",
-                            value: TelemetryFormatter.gForce(telemetryManager.corneringG),
-                            subtitle: "Peak \(TelemetryFormatter.gForce(telemetryManager.peakCorneringG))",
-                            holdProgress: holdProgress(for: .peakCornering)
-                        )
-                        .onLongPressGesture(
-                            minimumDuration: 1,
-                            maximumDistance: 30,
-                            pressing: { isPressing in
-                                handleHoldChange(
-                                    isPressing: isPressing,
-                                    target: .peakCornering,
-                                    warning: "Keep holding to reset peak cornering G."
-                                )
-                            },
-                            perform: {
-                                telemetryManager.resetPeakCornering()
-                                clearHoldState()
-                            }
+                            title: "Speed",
+                            value: "\(TelemetryFormatter.speed(telemetryManager.currentSpeedMPS, unit: settings.unit)) \(settings.unit.speedUnitTitle)",
+                            subtitle: telemetryManager.isRunActive ? "Run active" : "Waiting for launch",
+                            progressValue: speedProgressValue(for: telemetryManager.currentSpeedMPS),
+                            progressColor: speedThresholdColor(for: telemetryManager.currentSpeedMPS)
                         )
 
                         if !telemetryManager.hasGPSPermission || telemetryManager.authorizationStatus == .denied || telemetryManager.authorizationStatus == .restricted {
@@ -426,5 +429,23 @@ struct MainStopwatchView: View {
 
     private func holdProgress(for target: HoldResetTarget) -> CGFloat {
         activeHoldTarget == target ? holdProgress : 0
+    }
+
+    private func speedProgressValue(for speedMPS: Double) -> CGFloat {
+        let kmh = speedMPS * 3.6
+        return min(max(kmh / 150, 0), 1)
+    }
+
+    private func speedThresholdColor(for speedMPS: Double) -> Color {
+        let kmh = speedMPS * 3.6
+
+        return switch kmh {
+        case ..<51:
+            Color.green
+        case ..<100:
+            Color.blue
+        default:
+            Color.red
+        }
     }
 }
