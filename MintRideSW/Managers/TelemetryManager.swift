@@ -16,6 +16,8 @@ final class TelemetryManager: NSObject, ObservableObject {
     @Published private(set) var sessionDistanceMeters: Double = 0
     @Published private(set) var accelerationG: Double = 0
     @Published private(set) var peakAccelerationG: Double = 0
+    @Published private(set) var corneringG: Double = 0
+    @Published private(set) var peakCorneringG: Double = 0
     @Published private(set) var currentAltitudeMeters: Double = 0
     @Published private(set) var benchmarkResults: [BenchmarkResult]
     @Published private(set) var gpsStatusText = "GPS idle"
@@ -30,6 +32,8 @@ final class TelemetryManager: NSObject, ObservableObject {
     private var sessionDistanceOrigin: Double = 0
     private var lastLocation: CLLocation?
     private var smoothedAccelerationG: Double = 0
+    private var smoothedCorneringG: Double = 0
+    private var travelHeadingRadians: Double?
 
     init(unit: DisplayUnit) {
         authorizationStatus = locationManager.authorizationStatus
@@ -86,6 +90,7 @@ final class TelemetryManager: NSObject, ObservableObject {
         sessionDistanceMeters = 0
         peakSpeedMPS = 0
         peakAccelerationG = 0
+        peakCorneringG = 0
         isRunActive = false
     }
 
@@ -118,6 +123,10 @@ final class TelemetryManager: NSObject, ObservableObject {
         peakAccelerationG = 0
     }
 
+    func resetPeakCornering() {
+        peakCorneringG = 0
+    }
+
     private func startMotionUpdates() {
         guard motionManager.isDeviceMotionAvailable else {
             motionStatusText = "Motion unavailable"
@@ -143,9 +152,11 @@ final class TelemetryManager: NSObject, ObservableObject {
                 return
             }
 
-            let horizontalAccelerationG = filteredHorizontalAcceleration(from: motion)
-            accelerationG = horizontalAccelerationG
-            peakAccelerationG = max(peakAccelerationG, horizontalAccelerationG)
+            let acceleration = filteredVehicleAcceleration(from: motion)
+            accelerationG = acceleration.longitudinal
+            corneringG = acceleration.lateral
+            peakAccelerationG = max(peakAccelerationG, acceleration.longitudinal)
+            peakCorneringG = max(peakCorneringG, acceleration.lateral)
             motionStatusText = "Accel filtered"
         }
     }
@@ -153,36 +164,60 @@ final class TelemetryManager: NSObject, ObservableObject {
     private var preferredMotionReferenceFrame: CMAttitudeReferenceFrame {
         let available = CMMotionManager.availableAttitudeReferenceFrames()
 
-        if available.contains(.xArbitraryCorrectedZVertical) {
-            return .xArbitraryCorrectedZVertical
-        }
-
-        if available.contains(.xArbitraryZVertical) {
-            return .xArbitraryZVertical
+        if available.contains(.xTrueNorthZVertical) {
+            return .xTrueNorthZVertical
         }
 
         if available.contains(.xMagneticNorthZVertical) {
             return .xMagneticNorthZVertical
         }
 
-        return .xTrueNorthZVertical
+        if available.contains(.xArbitraryCorrectedZVertical) {
+            return .xArbitraryCorrectedZVertical
+        }
+
+        return .xArbitraryZVertical
     }
 
-    private func filteredHorizontalAcceleration(from motion: CMDeviceMotion) -> Double {
+    private func filteredVehicleAcceleration(from motion: CMDeviceMotion) -> (longitudinal: Double, lateral: Double) {
         let rotation = motion.attitude.rotationMatrix
         let userAcceleration = motion.userAcceleration
 
-        // Rotate device-space acceleration into a stable frame, then ignore vertical motion.
-        let worldX = rotation.m11 * userAcceleration.x + rotation.m12 * userAcceleration.y + rotation.m13 * userAcceleration.z
-        let worldY = rotation.m21 * userAcceleration.x + rotation.m22 * userAcceleration.y + rotation.m23 * userAcceleration.z
-        var horizontalG = hypot(worldX, worldY)
+        // rotationMatrix maps reference -> device, so transpose maps device -> reference.
+        let worldX = rotation.m11 * userAcceleration.x + rotation.m21 * userAcceleration.y + rotation.m31 * userAcceleration.z
+        let worldY = rotation.m12 * userAcceleration.x + rotation.m22 * userAcceleration.y + rotation.m32 * userAcceleration.z
 
-        if horizontalG < MotionTuning.noiseFloorG {
-            horizontalG = 0
+        let projected: (Double, Double)
+        if let heading = travelHeadingRadians {
+            let headingVectorX = cos(heading)
+            let headingVectorY = sin(heading)
+            let lateralVectorX = -headingVectorY
+            let lateralVectorY = headingVectorX
+
+            projected = (
+                abs(worldX * headingVectorX + worldY * headingVectorY),
+                abs(worldX * lateralVectorX + worldY * lateralVectorY)
+            )
+        } else {
+            projected = (hypot(worldX, worldY), 0)
         }
 
-        smoothedAccelerationG += (horizontalG - smoothedAccelerationG) * MotionTuning.smoothingFactor
-        return smoothedAccelerationG
+        let longitudinal = filteredG(
+            rawValue: projected.0,
+            previousValue: &smoothedAccelerationG
+        )
+        let lateral = filteredG(
+            rawValue: projected.1,
+            previousValue: &smoothedCorneringG
+        )
+
+        return (longitudinal, lateral)
+    }
+
+    private func filteredG(rawValue: Double, previousValue: inout Double) -> Double {
+        let sanitized = rawValue < MotionTuning.noiseFloorG ? 0 : rawValue
+        previousValue += (sanitized - previousValue) * MotionTuning.smoothingFactor
+        return previousValue
     }
 }
 
@@ -223,6 +258,9 @@ extension TelemetryManager: @preconcurrency CLLocationManagerDelegate {
             sessionDistanceMeters = max(0, cumulativeDistanceMeters - sessionDistanceOrigin)
             if location.verticalAccuracy >= 0 {
                 currentAltitudeMeters = location.altitude
+            }
+            if location.course >= 0, derivedSpeed >= 2 {
+                travelHeadingRadians = location.course * .pi / 180
             }
 
             let snapshot = tracker.processSample(

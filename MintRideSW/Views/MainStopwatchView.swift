@@ -7,6 +7,7 @@ struct MainStopwatchView: View {
         case distance
         case peakSpeed
         case peakAcceleration
+        case peakCornering
     }
 
     @EnvironmentObject private var settings: AppSettings
@@ -167,13 +168,36 @@ struct MainStopwatchView: View {
                             )
                         }
 
-                        Text(telemetryManager.permissionSummary)
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                            .fixedSize(horizontal: false, vertical: true)
+                        MetricTile(
+                            title: "Cornering",
+                            value: TelemetryFormatter.gForce(telemetryManager.corneringG),
+                            subtitle: "Peak \(TelemetryFormatter.gForce(telemetryManager.peakCorneringG))",
+                            holdProgress: holdProgress(for: .peakCornering)
+                        )
+                        .onLongPressGesture(
+                            minimumDuration: 1,
+                            maximumDistance: 30,
+                            pressing: { isPressing in
+                                handleHoldChange(
+                                    isPressing: isPressing,
+                                    target: .peakCornering,
+                                    warning: "Keep holding to reset peak cornering G."
+                                )
+                            },
+                            perform: {
+                                telemetryManager.resetPeakCornering()
+                                clearHoldState()
+                            }
+                        )
 
                         if !telemetryManager.hasGPSPermission || telemetryManager.authorizationStatus == .denied || telemetryManager.authorizationStatus == .restricted {
-                            HStack(spacing: 12) {
+                            VStack(alignment: .leading, spacing: 12) {
+                                Text(telemetryManager.permissionSummary)
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                                    .fixedSize(horizontal: false, vertical: true)
+
+                                HStack(spacing: 12) {
                                 if !telemetryManager.hasGPSPermission {
                                     Button("Enable GPS") {
                                         telemetryManager.requestPermissions()
@@ -187,6 +211,7 @@ struct MainStopwatchView: View {
                                         .font(.caption)
                                         .foregroundStyle(.secondary)
                                 }
+                            }
                             }
                         }
 
