@@ -160,7 +160,7 @@ struct MainStopwatchView: View {
                                 )
 
                                 MetricTile(
-                                    title: "Peak Speed",
+                                    title: "Top Speed",
                                     value: "\(TelemetryFormatter.speed(telemetryManager.peakSpeedMPS, unit: settings.unit)) \(settings.unit.speedUnitTitle)",
                                     subtitle: "Hold to reset",
                                     valueColor: speedThresholdColor(for: telemetryManager.peakSpeedMPS),
@@ -173,7 +173,7 @@ struct MainStopwatchView: View {
                                         handleHoldChange(
                                             isPressing: isPressing,
                                             target: .peakSpeed,
-                                            warning: "Keep holding to reset peak speed."
+                                            warning: "Keep holding to reset top speed."
                                         )
                                     },
                                     perform: {
