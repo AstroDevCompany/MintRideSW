@@ -7,178 +7,187 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		077ABAE904B94B2A279F7ADA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 825692F1CB0877E229BEBB08 /* Foundation.framework */; };
-		087F1A512FE8CF234B862B79 /* MetricTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F56FB3F06C5949FFBD89D5 /* MetricTile.swift */; };
-		41D979C556695A4A2252D05D /* RunTrackerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDCF8DEE7E756EC1C4E3DCB /* RunTrackerCore.swift */; };
-		613FCD9F2E5A098C2FA14261 /* MintRideSWApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7DDBC68464E7FF82E8ADE0 /* MintRideSWApp.swift */; };
-		7EE2678A34CEF9E5E24EC171 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EE4C8268359A761C75ECA7 /* AppSettings.swift */; };
-		9AD4B23A963AFA94F60D5192 /* MintRideSWTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BC9A81A53B79DC39BF5F7D /* MintRideSWTests.swift */; };
-		B383ECFCBD5D770D47C62AA2 /* TelemetryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B7DA0CE01760FB3AA700FE /* TelemetryModels.swift */; };
-		BA37D5E45A9BD99A7D15AABE /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A129033641A099BD251A30 /* Formatters.swift */; };
-		BD25B6B09AF37C4AA15BC32A /* TelemetryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDC3C9C17A237E928C25384 /* TelemetryManager.swift */; };
-		C17DC2EC69365271B8C3B4EE /* StopwatchEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EF97EB5EC993CCE0593F8A /* StopwatchEngine.swift */; };
-		CE5D888FFB850FA62840F369 /* MainStopwatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC77CE7429FA6F367576CA0 /* MainStopwatchView.swift */; };
-		DBA6DEA32616BF49BE9E5E55 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBE7A8791F4E794ACD95C56 /* SettingsView.swift */; };
-		EB38F1E30C1A99F4FE154520 /* BenchmarkTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5207319D03F8D98C88EA134 /* BenchmarkTile.swift */; };
-		F11B9F5B8736648E91A010F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 825692F1CB0877E229BEBB08 /* Foundation.framework */; };
-		FE0AAE9D10AB7BDB783A8A21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9620164FD03467766CB08FE6 /* Assets.xcassets */; };
+		27F980937448E0A2430A1DD3 /* MintRideSWApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334682A1D92058F1EBCD2F8F /* MintRideSWApp.swift */; };
+		3FB0801A20AC1EAAEF052330 /* RunTrackerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB217C2566E76304F2935A0C /* RunTrackerCore.swift */; };
+		4721053BB671B5EE395847EA /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2874CA0B879FB6137FA215 /* HistoryView.swift */; };
+		4EFA9D720B8078B3A2026874 /* TelemetryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0719885B8C6C1E52E8CBCA5C /* TelemetryModels.swift */; };
+		6152886C90520256DBBAE86E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC781AE843C2C47D163C051 /* Foundation.framework */; };
+		65C920FACE2EFC05EC67130A /* TelemetryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1401BF82BED0370C15367E2 /* TelemetryManager.swift */; };
+		6DB38721044858F0909FD257 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEA3ADE06156154733C8159 /* SettingsView.swift */; };
+		86027546C5CDC56FFD8C34D0 /* MintRideSWTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F37D63759D7075AB1DF39 /* MintRideSWTests.swift */; };
+		87A6623AC08FBB595B7B24F4 /* BenchmarkTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F96A92C9FED2342CFB2C5C /* BenchmarkTile.swift */; };
+		A4F1E50D7A2937397A1729F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC781AE843C2C47D163C051 /* Foundation.framework */; };
+		AC591B525723574D96F37D17 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1FD0BB864F16608B6CBED1 /* Formatters.swift */; };
+		B90D3FF3DA0AE856B9505BC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 349C1EDEDE99E347B3588791 /* Assets.xcassets */; };
+		C6D8CC58B363FB4D52F5A109 /* HistoryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDE1156B77728A25B0201E8 /* HistoryModels.swift */; };
+		D3F62EF03E105BA7B71E6694 /* StopwatchEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8BEEBECF431874323F0971 /* StopwatchEngine.swift */; };
+		D9CE18EC9670B4C2F7168D5A /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36684A09BBFC06D2864B4094 /* AppSettings.swift */; };
+		DA377D49FCCB730446C30FFF /* MetricTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6290A1E1A106B98D7799F8 /* MetricTile.swift */; };
+		DAE13E52B377EE3E44647531 /* MainStopwatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD82AC6DF25E328E5FBBED99 /* MainStopwatchView.swift */; };
+		EBC4065D6D1102CD676A49F1 /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7586960388D549F326CC186E /* HistoryStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		8AD1B16C08F39819482EEF43 /* PBXContainerItemProxy */ = {
+		A04D8D412E0BDB44DFE52862 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 677E1F8DB44D3EBD0DB61A71 /* Project object */;
+			containerPortal = FE5289077D629F5C677B84AD /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1A96B7CAA9693ECE80402966;
+			remoteGlobalIDString = 2915D91C65EE85947AE27656;
 			remoteInfo = MintRideSW;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		090FF2B4558741953CCF802B /* MintRideSW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MintRideSW.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		16EE4C8268359A761C75ECA7 /* AppSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
-		27F56FB3F06C5949FFBD89D5 /* MetricTile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MetricTile.swift; sourceTree = "<group>"; };
-		2CDC3C9C17A237E928C25384 /* TelemetryManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TelemetryManager.swift; sourceTree = "<group>"; };
-		41B7DA0CE01760FB3AA700FE /* TelemetryModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TelemetryModels.swift; sourceTree = "<group>"; };
-		43D6C023A1363549F48DB47E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6F7DDBC68464E7FF82E8ADE0 /* MintRideSWApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MintRideSWApp.swift; sourceTree = "<group>"; };
-		825692F1CB0877E229BEBB08 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		9620164FD03467766CB08FE6 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B5207319D03F8D98C88EA134 /* BenchmarkTile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BenchmarkTile.swift; sourceTree = "<group>"; };
-		BBC77CE7429FA6F367576CA0 /* MainStopwatchView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainStopwatchView.swift; sourceTree = "<group>"; };
-		CE2BF15C9170A6873D56671C /* MintRideSWTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MintRideSWTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1EF97EB5EC993CCE0593F8A /* StopwatchEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StopwatchEngine.swift; sourceTree = "<group>"; };
-		D9A129033641A099BD251A30 /* Formatters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
-		EEBE7A8791F4E794ACD95C56 /* SettingsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		F4BC9A81A53B79DC39BF5F7D /* MintRideSWTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MintRideSWTests.swift; sourceTree = "<group>"; };
-		FEDCF8DEE7E756EC1C4E3DCB /* RunTrackerCore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RunTrackerCore.swift; sourceTree = "<group>"; };
+		0719885B8C6C1E52E8CBCA5C /* TelemetryModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TelemetryModels.swift; sourceTree = "<group>"; };
+		0E6C42645C207477DCF4C2FE /* MintRideSW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MintRideSW.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C1FD0BB864F16608B6CBED1 /* Formatters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		30DAFC8553324700927BC0CC /* MintRideSWTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MintRideSWTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		334682A1D92058F1EBCD2F8F /* MintRideSWApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MintRideSWApp.swift; sourceTree = "<group>"; };
+		349C1EDEDE99E347B3588791 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		34F96A92C9FED2342CFB2C5C /* BenchmarkTile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BenchmarkTile.swift; sourceTree = "<group>"; };
+		36684A09BBFC06D2864B4094 /* AppSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		3FEA3ADE06156154733C8159 /* SettingsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		4C482F9D63767B4326E2DD66 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7586960388D549F326CC186E /* HistoryStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HistoryStore.swift; sourceTree = "<group>"; };
+		7CC781AE843C2C47D163C051 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		A1401BF82BED0370C15367E2 /* TelemetryManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TelemetryManager.swift; sourceTree = "<group>"; };
+		AF6290A1E1A106B98D7799F8 /* MetricTile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MetricTile.swift; sourceTree = "<group>"; };
+		BC8BEEBECF431874323F0971 /* StopwatchEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StopwatchEngine.swift; sourceTree = "<group>"; };
+		CB8F37D63759D7075AB1DF39 /* MintRideSWTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MintRideSWTests.swift; sourceTree = "<group>"; };
+		CD82AC6DF25E328E5FBBED99 /* MainStopwatchView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainStopwatchView.swift; sourceTree = "<group>"; };
+		CFDE1156B77728A25B0201E8 /* HistoryModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HistoryModels.swift; sourceTree = "<group>"; };
+		FB217C2566E76304F2935A0C /* RunTrackerCore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RunTrackerCore.swift; sourceTree = "<group>"; };
+		FE2874CA0B879FB6137FA215 /* HistoryView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2385C1DA5071724254187935 /* Frameworks */ = {
+		108875B18901C1C4E1BCFFBD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F11B9F5B8736648E91A010F6 /* Foundation.framework in Frameworks */,
+				6152886C90520256DBBAE86E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8F58BAFA6B802D242638EC92 /* Frameworks */ = {
+		AFFFA164E8D2979659E32334 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				077ABAE904B94B2A279F7ADA /* Foundation.framework in Frameworks */,
+				A4F1E50D7A2937397A1729F4 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0385AF65D91730E03A6AA86E /* Utilities */ = {
+		01E8E10A174629054123AD2F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				D9A129033641A099BD251A30 /* Formatters.swift */,
+				2C1FD0BB864F16608B6CBED1 /* Formatters.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		1819AD0961109BB862BD0BA7 /* iOS */ = {
+		02E8BDF4C1EC1CA33B51EE46 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				825692F1CB0877E229BEBB08 /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		3517173C41A1C25BD74BC577 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1819AD0961109BB862BD0BA7 /* iOS */,
+				3D369A8AC8F0B4EA63161D32 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3C3253D098FA024B67BB4696 /* Products */ = {
+		1BB40A65B8A58F9F7AFDD80D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				090FF2B4558741953CCF802B /* MintRideSW.app */,
-				CE2BF15C9170A6873D56671C /* MintRideSWTests.xctest */,
+				0E6C42645C207477DCF4C2FE /* MintRideSW.app */,
+				30DAFC8553324700927BC0CC /* MintRideSWTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		406838E4106D0D8AE70ED5ED /* MintRideSWTests */ = {
+		1CF990B6286A5B50DE24CFB3 /* MintRideSW */ = {
 			isa = PBXGroup;
 			children = (
-				F4BC9A81A53B79DC39BF5F7D /* MintRideSWTests.swift */,
-			);
-			path = MintRideSWTests;
-			sourceTree = "<group>";
-		};
-		7975E718A2523A8B58CA196B = {
-			isa = PBXGroup;
-			children = (
-				3C3253D098FA024B67BB4696 /* Products */,
-				3517173C41A1C25BD74BC577 /* Frameworks */,
-				AA00AE4FBA565CB913C7F53F /* MintRideSW */,
-				406838E4106D0D8AE70ED5ED /* MintRideSWTests */,
-			);
-			sourceTree = "<group>";
-		};
-		A0985AAB3722ADE649AA724D /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				16EE4C8268359A761C75ECA7 /* AppSettings.swift */,
-				41B7DA0CE01760FB3AA700FE /* TelemetryModels.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		AA00AE4FBA565CB913C7F53F /* MintRideSW */ = {
-			isa = PBXGroup;
-			children = (
-				A0985AAB3722ADE649AA724D /* Models */,
-				B8A06B32C908794834B3B915 /* Managers */,
-				0385AF65D91730E03A6AA86E /* Utilities */,
-				F2BEDADADEF1463388B57991 /* Views */,
-				6F7DDBC68464E7FF82E8ADE0 /* MintRideSWApp.swift */,
-				43D6C023A1363549F48DB47E /* Info.plist */,
-				9620164FD03467766CB08FE6 /* Assets.xcassets */,
+				FBE03D06D50BAF4AE9A7105D /* Models */,
+				5D06280017A23587D744B23B /* Managers */,
+				01E8E10A174629054123AD2F /* Utilities */,
+				7705B46F77733D5EB9FB7545 /* Views */,
+				334682A1D92058F1EBCD2F8F /* MintRideSWApp.swift */,
+				4C482F9D63767B4326E2DD66 /* Info.plist */,
+				349C1EDEDE99E347B3588791 /* Assets.xcassets */,
 			);
 			path = MintRideSW;
 			sourceTree = "<group>";
 		};
-		B8A06B32C908794834B3B915 /* Managers */ = {
+		1DA33B1EBBD1BB7D990879FD = {
 			isa = PBXGroup;
 			children = (
-				FEDCF8DEE7E756EC1C4E3DCB /* RunTrackerCore.swift */,
-				D1EF97EB5EC993CCE0593F8A /* StopwatchEngine.swift */,
-				2CDC3C9C17A237E928C25384 /* TelemetryManager.swift */,
+				1BB40A65B8A58F9F7AFDD80D /* Products */,
+				02E8BDF4C1EC1CA33B51EE46 /* Frameworks */,
+				1CF990B6286A5B50DE24CFB3 /* MintRideSW */,
+				2F763C93F5D580E885298E58 /* MintRideSWTests */,
+			);
+			sourceTree = "<group>";
+		};
+		2F763C93F5D580E885298E58 /* MintRideSWTests */ = {
+			isa = PBXGroup;
+			children = (
+				CB8F37D63759D7075AB1DF39 /* MintRideSWTests.swift */,
+			);
+			path = MintRideSWTests;
+			sourceTree = "<group>";
+		};
+		3D369A8AC8F0B4EA63161D32 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				7CC781AE843C2C47D163C051 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		5D06280017A23587D744B23B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				7586960388D549F326CC186E /* HistoryStore.swift */,
+				FB217C2566E76304F2935A0C /* RunTrackerCore.swift */,
+				BC8BEEBECF431874323F0971 /* StopwatchEngine.swift */,
+				A1401BF82BED0370C15367E2 /* TelemetryManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		F2BEDADADEF1463388B57991 /* Views */ = {
+		7705B46F77733D5EB9FB7545 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B5207319D03F8D98C88EA134 /* BenchmarkTile.swift */,
-				BBC77CE7429FA6F367576CA0 /* MainStopwatchView.swift */,
-				27F56FB3F06C5949FFBD89D5 /* MetricTile.swift */,
-				EEBE7A8791F4E794ACD95C56 /* SettingsView.swift */,
+				FE2874CA0B879FB6137FA215 /* HistoryView.swift */,
+				34F96A92C9FED2342CFB2C5C /* BenchmarkTile.swift */,
+				CD82AC6DF25E328E5FBBED99 /* MainStopwatchView.swift */,
+				AF6290A1E1A106B98D7799F8 /* MetricTile.swift */,
+				3FEA3ADE06156154733C8159 /* SettingsView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FBE03D06D50BAF4AE9A7105D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				36684A09BBFC06D2864B4094 /* AppSettings.swift */,
+				CFDE1156B77728A25B0201E8 /* HistoryModels.swift */,
+				0719885B8C6C1E52E8CBCA5C /* TelemetryModels.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1A96B7CAA9693ECE80402966 /* MintRideSW */ = {
+		2915D91C65EE85947AE27656 /* MintRideSW */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D5BC6670C5E492B2ED45FD7 /* Build configuration list for PBXNativeTarget "MintRideSW" */;
+			buildConfigurationList = 425F5D4733D6E73488558931 /* Build configuration list for PBXNativeTarget "MintRideSW" */;
 			buildPhases = (
-				1518A87C9EC6332D34F85849 /* Sources */,
-				2385C1DA5071724254187935 /* Frameworks */,
-				4C3002645369E4E73EB095F9 /* Resources */,
+				682F7D8360535C992DCCF96A /* Sources */,
+				AFFFA164E8D2979659E32334 /* Frameworks */,
+				3FA94CB013640175A3E508A4 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -186,43 +195,43 @@
 			);
 			name = MintRideSW;
 			productName = MintRideSW;
-			productReference = 090FF2B4558741953CCF802B /* MintRideSW.app */;
+			productReference = 0E6C42645C207477DCF4C2FE /* MintRideSW.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CE015C70206AAA68ED78AFE4 /* MintRideSWTests */ = {
+		C9A0E9C1F2FB2F55B8B6D429 /* MintRideSWTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DCDC22B91C07A2936F69DC03 /* Build configuration list for PBXNativeTarget "MintRideSWTests" */;
+			buildConfigurationList = 83B802F60B5D3200FE6BCCF5 /* Build configuration list for PBXNativeTarget "MintRideSWTests" */;
 			buildPhases = (
-				C28538B0363956C609294DDD /* Sources */,
-				8F58BAFA6B802D242638EC92 /* Frameworks */,
-				5B1F17AA10E67B8276269B5E /* Resources */,
+				E83B8C08E45441D74954AC2F /* Sources */,
+				108875B18901C1C4E1BCFFBD /* Frameworks */,
+				B8B3E063CF366717A9E40FD0 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				475823EAB34CE6208C93B954 /* PBXTargetDependency */,
+				2704B7E3BD90F75B3E307A63 /* PBXTargetDependency */,
 			);
 			name = MintRideSWTests;
 			productName = MintRideSWTests;
-			productReference = CE2BF15C9170A6873D56671C /* MintRideSWTests.xctest */;
+			productReference = 30DAFC8553324700927BC0CC /* MintRideSWTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		677E1F8DB44D3EBD0DB61A71 /* Project object */ = {
+		FE5289077D629F5C677B84AD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
-					1A96B7CAA9693ECE80402966 = {
+					2915D91C65EE85947AE27656 = {
 						DevelopmentTeam = JUQ9UN9NM7;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 44E73A911315D06C025C2EA4 /* Build configuration list for PBXProject "MintRideSW" */;
+			buildConfigurationList = 077802223DFBD39277AF1FBA /* Build configuration list for PBXProject "MintRideSW" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -230,27 +239,27 @@
 				en,
 				Base,
 			);
-			mainGroup = 7975E718A2523A8B58CA196B;
-			productRefGroup = 3C3253D098FA024B67BB4696 /* Products */;
+			mainGroup = 1DA33B1EBBD1BB7D990879FD;
+			productRefGroup = 1BB40A65B8A58F9F7AFDD80D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1A96B7CAA9693ECE80402966 /* MintRideSW */,
-				CE015C70206AAA68ED78AFE4 /* MintRideSWTests */,
+				2915D91C65EE85947AE27656 /* MintRideSW */,
+				C9A0E9C1F2FB2F55B8B6D429 /* MintRideSWTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4C3002645369E4E73EB095F9 /* Resources */ = {
+		3FA94CB013640175A3E508A4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE0AAE9D10AB7BDB783A8A21 /* Assets.xcassets in Resources */,
+				B90D3FF3DA0AE856B9505BC3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5B1F17AA10E67B8276269B5E /* Resources */ = {
+		B8B3E063CF366717A9E40FD0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -260,45 +269,79 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1518A87C9EC6332D34F85849 /* Sources */ = {
+		682F7D8360535C992DCCF96A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				613FCD9F2E5A098C2FA14261 /* MintRideSWApp.swift in Sources */,
-				7EE2678A34CEF9E5E24EC171 /* AppSettings.swift in Sources */,
-				B383ECFCBD5D770D47C62AA2 /* TelemetryModels.swift in Sources */,
-				41D979C556695A4A2252D05D /* RunTrackerCore.swift in Sources */,
-				C17DC2EC69365271B8C3B4EE /* StopwatchEngine.swift in Sources */,
-				BD25B6B09AF37C4AA15BC32A /* TelemetryManager.swift in Sources */,
-				BA37D5E45A9BD99A7D15AABE /* Formatters.swift in Sources */,
-				EB38F1E30C1A99F4FE154520 /* BenchmarkTile.swift in Sources */,
-				CE5D888FFB850FA62840F369 /* MainStopwatchView.swift in Sources */,
-				087F1A512FE8CF234B862B79 /* MetricTile.swift in Sources */,
-				DBA6DEA32616BF49BE9E5E55 /* SettingsView.swift in Sources */,
+				27F980937448E0A2430A1DD3 /* MintRideSWApp.swift in Sources */,
+				D9CE18EC9670B4C2F7168D5A /* AppSettings.swift in Sources */,
+				C6D8CC58B363FB4D52F5A109 /* HistoryModels.swift in Sources */,
+				4EFA9D720B8078B3A2026874 /* TelemetryModels.swift in Sources */,
+				EBC4065D6D1102CD676A49F1 /* HistoryStore.swift in Sources */,
+				3FB0801A20AC1EAAEF052330 /* RunTrackerCore.swift in Sources */,
+				D3F62EF03E105BA7B71E6694 /* StopwatchEngine.swift in Sources */,
+				65C920FACE2EFC05EC67130A /* TelemetryManager.swift in Sources */,
+				4721053BB671B5EE395847EA /* HistoryView.swift in Sources */,
+				AC591B525723574D96F37D17 /* Formatters.swift in Sources */,
+				87A6623AC08FBB595B7B24F4 /* BenchmarkTile.swift in Sources */,
+				DAE13E52B377EE3E44647531 /* MainStopwatchView.swift in Sources */,
+				DA377D49FCCB730446C30FFF /* MetricTile.swift in Sources */,
+				6DB38721044858F0909FD257 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C28538B0363956C609294DDD /* Sources */ = {
+		E83B8C08E45441D74954AC2F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AD4B23A963AFA94F60D5192 /* MintRideSWTests.swift in Sources */,
+				86027546C5CDC56FFD8C34D0 /* MintRideSWTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		475823EAB34CE6208C93B954 /* PBXTargetDependency */ = {
+		2704B7E3BD90F75B3E307A63 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MintRideSW;
-			target = 1A96B7CAA9693ECE80402966 /* MintRideSW */;
-			targetProxy = 8AD1B16C08F39819482EEF43 /* PBXContainerItemProxy */;
+			target = 2915D91C65EE85947AE27656 /* MintRideSW */;
+			targetProxy = A04D8D412E0BDB44DFE52862 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1F2E81349C0E6BE6B1CFD1C8 /* Release */ = {
+		0FB3A36953217821E8D709D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.luca.MintRideSWTests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MintRideSW.app/MintRideSW";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4B89A30793D7CE06DFBE5848 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.luca.MintRideSWTests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MintRideSW.app/MintRideSW";
+			};
+			name = Debug;
+		};
+		5C9BE33A800A9A8271BD9585 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -351,7 +394,56 @@
 			};
 			name = Release;
 		};
-		4D3440FE1E0437020C7C508F /* Debug */ = {
+		898FC5C4BF8763754F1D211A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JUQ9UN9NM7;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = MintRideSW/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MintRideSW;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.luca.MintRideSW;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9BFB9B640A7EAE0DEE2FEACB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JUQ9UN9NM7;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = MintRideSW/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MintRideSW;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.luca.MintRideSW;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B2C8652A3F5D35E19071BBC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -412,115 +504,37 @@
 			};
 			name = Debug;
 		};
-		68D3AA91AA9D8F7B3DFA99D9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.luca.MintRideSWTests;
-				SDKROOT = iphoneos;
-				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MintRideSW.app/MintRideSW";
-			};
-			name = Debug;
-		};
-		9A2E50AD3E9866797B2271B8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JUQ9UN9NM7;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = MintRideSW/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.luca.MintRideSW;
-				SDKROOT = iphoneos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		C37D89DCAFCED7018F8E02B7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.luca.MintRideSWTests;
-				SDKROOT = iphoneos;
-				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MintRideSW.app/MintRideSW";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		C4ABB275326358A734F0094F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JUQ9UN9NM7;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = MintRideSW/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.luca.MintRideSW;
-				SDKROOT = iphoneos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D5BC6670C5E492B2ED45FD7 /* Build configuration list for PBXNativeTarget "MintRideSW" */ = {
+		077802223DFBD39277AF1FBA /* Build configuration list for PBXProject "MintRideSW" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9A2E50AD3E9866797B2271B8 /* Release */,
-				C4ABB275326358A734F0094F /* Debug */,
+				B2C8652A3F5D35E19071BBC3 /* Debug */,
+				5C9BE33A800A9A8271BD9585 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		44E73A911315D06C025C2EA4 /* Build configuration list for PBXProject "MintRideSW" */ = {
+		425F5D4733D6E73488558931 /* Build configuration list for PBXNativeTarget "MintRideSW" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4D3440FE1E0437020C7C508F /* Debug */,
-				1F2E81349C0E6BE6B1CFD1C8 /* Release */,
+				9BFB9B640A7EAE0DEE2FEACB /* Release */,
+				898FC5C4BF8763754F1D211A /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DCDC22B91C07A2936F69DC03 /* Build configuration list for PBXNativeTarget "MintRideSWTests" */ = {
+		83B802F60B5D3200FE6BCCF5 /* Build configuration list for PBXNativeTarget "MintRideSWTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C37D89DCAFCED7018F8E02B7 /* Release */,
-				68D3AA91AA9D8F7B3DFA99D9 /* Debug */,
+				0FB3A36953217821E8D709D6 /* Release */,
+				4B89A30793D7CE06DFBE5848 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 677E1F8DB44D3EBD0DB61A71 /* Project object */;
+	rootObject = FE5289077D629F5C677B84AD /* Project object */;
 }

@@ -4,6 +4,7 @@ import SwiftUI
 struct MintRideSWApp: App {
     @StateObject private var settings: AppSettings
     @StateObject private var telemetryManager: TelemetryManager
+    @StateObject private var historyStore = HistoryStore()
     private let isRunningTests = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
 
     init() {
@@ -19,6 +20,7 @@ struct MintRideSWApp: App {
             }
             .environmentObject(settings)
             .environmentObject(telemetryManager)
+            .environmentObject(historyStore)
             .preferredColorScheme(settings.theme.colorScheme)
             .task {
                 guard !isRunningTests else { return }

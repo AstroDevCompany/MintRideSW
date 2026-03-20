@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1A96B7CAA9693ECE80402966"
+               BlueprintIdentifier = "2915D91C65EE85947AE27656"
                BuildableName = "MintRideSW.app"
                BlueprintName = "MintRideSW"
                ReferencedContainer = "container:MintRideSW.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CE015C70206AAA68ED78AFE4"
+               BlueprintIdentifier = "C9A0E9C1F2FB2F55B8B6D429"
                BuildableName = "MintRideSWTests.xctest"
                BlueprintName = "MintRideSWTests"
                ReferencedContainer = "container:MintRideSW.xcodeproj">
@@ -44,7 +44,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1A96B7CAA9693ECE80402966"
+            BlueprintIdentifier = "2915D91C65EE85947AE27656"
             BuildableName = "MintRideSW.app"
             BlueprintName = "MintRideSW"
             ReferencedContainer = "container:MintRideSW.xcodeproj">
@@ -55,7 +55,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CE015C70206AAA68ED78AFE4"
+               BlueprintIdentifier = "C9A0E9C1F2FB2F55B8B6D429"
                BuildableName = "MintRideSWTests.xctest"
                BlueprintName = "MintRideSWTests"
                ReferencedContainer = "container:MintRideSW.xcodeproj">
@@ -77,7 +77,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1A96B7CAA9693ECE80402966"
+            BlueprintIdentifier = "2915D91C65EE85947AE27656"
             BuildableName = "MintRideSW.app"
             BlueprintName = "MintRideSW"
             ReferencedContainer = "container:MintRideSW.xcodeproj">
@@ -94,7 +94,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1A96B7CAA9693ECE80402966"
+            BlueprintIdentifier = "2915D91C65EE85947AE27656"
             BuildableName = "MintRideSW.app"
             BlueprintName = "MintRideSW"
             ReferencedContainer = "container:MintRideSW.xcodeproj">

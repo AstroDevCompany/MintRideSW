@@ -101,6 +101,7 @@ final class TelemetryManager: NSObject, ObservableObject {
         sessionDistanceMeters = 0
         peakSpeedMPS = 0
         peakAccelerationG = 0
+        peakCorneringG = 0
         isRunActive = false
     }
 

@@ -12,8 +12,11 @@ struct MainStopwatchView: View {
 
     @EnvironmentObject private var settings: AppSettings
     @EnvironmentObject private var telemetryManager: TelemetryManager
+    @EnvironmentObject private var historyStore: HistoryStore
 
     @StateObject private var stopwatch = StopwatchEngine()
+    @State private var currentSessionStartedAt: Date?
+    @State private var showsHistory = false
     @State private var showsSettings = false
     @State private var activeHoldTarget: HoldResetTarget?
     @State private var holdProgress: CGFloat = 0
@@ -67,6 +70,9 @@ struct MainStopwatchView: View {
                             if stopwatch.isRunning {
                                 stopwatch.pause()
                             } else {
+                                if currentSessionStartedAt == nil {
+                                    currentSessionStartedAt = Date()
+                                }
                                 stopwatch.start()
                             }
                         } label: {
@@ -236,7 +242,18 @@ struct MainStopwatchView: View {
                     .padding(.horizontal, 20)
                 }
 
-                VStack(alignment: .trailing, spacing: 10) {
+                HStack(spacing: 10) {
+                    Button {
+                        showsHistory = true
+                    } label: {
+                        Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
+                            .font(.headline.weight(.semibold))
+                            .foregroundStyle(.primary)
+                            .padding(12)
+                            .background(.ultraThinMaterial, in: Circle())
+                    }
+                    .accessibilityLabel("Open History")
+
                     Button {
                         showsSettings = true
                     } label: {
@@ -253,6 +270,9 @@ struct MainStopwatchView: View {
             }
         }
         .toolbar(.hidden, for: .navigationBar)
+        .navigationDestination(isPresented: $showsHistory) {
+            HistoryView()
+        }
         .navigationDestination(isPresented: $showsSettings) {
             SettingsView()
         }
@@ -352,8 +372,7 @@ struct MainStopwatchView: View {
                         )
                     },
                     perform: {
-                        stopwatch.reset()
-                        clearHoldState()
+                        resetCurrentSession()
                     }
                 )
         }
@@ -447,5 +466,48 @@ struct MainStopwatchView: View {
         default:
             Color.red
         }
+    }
+
+    private func resetCurrentSession() {
+        finalizeSessionIfNeeded()
+        stopwatch.reset()
+        telemetryManager.resetBenchmarks()
+        currentSessionStartedAt = nil
+        clearHoldState()
+    }
+
+    private func finalizeSessionIfNeeded() {
+        guard let startedAt = currentSessionStartedAt else { return }
+
+        let elapsedTimer = stopwatch.elapsed
+        let benchmarkRecords = telemetryManager.benchmarkResults.compactMap { result -> SessionBenchmarkRecord? in
+            guard let elapsed = result.elapsed else { return nil }
+            return SessionBenchmarkRecord(title: result.definition.title, elapsed: elapsed)
+        }
+
+        let hasMeaningfulData =
+            elapsedTimer > 0 ||
+            telemetryManager.peakSpeedMPS > 0 ||
+            telemetryManager.peakAccelerationG > 0 ||
+            telemetryManager.peakCorneringG > 0 ||
+            telemetryManager.sessionDistanceMeters > 0 ||
+            !benchmarkRecords.isEmpty
+
+        guard hasMeaningfulData else { return }
+
+        historyStore.storeSession(
+            SessionHistoryEntry(
+                id: UUID(),
+                startedAt: startedAt,
+                endedAt: Date(),
+                elapsedTimer: elapsedTimer,
+                unitRawValue: settings.unit.rawValue,
+                topSpeedMPS: telemetryManager.peakSpeedMPS,
+                peakAccelerationG: telemetryManager.peakAccelerationG,
+                peakCorneringG: telemetryManager.peakCorneringG,
+                distanceMeters: telemetryManager.sessionDistanceMeters,
+                benchmarks: benchmarkRecords
+            )
+        )
     }
 }

@@ -18,10 +18,13 @@ test_target.add_dependency(app_target)
 app_files = %w[
   MintRideSW/MintRideSWApp.swift
   MintRideSW/Models/AppSettings.swift
+  MintRideSW/Models/HistoryModels.swift
   MintRideSW/Models/TelemetryModels.swift
+  MintRideSW/Managers/HistoryStore.swift
   MintRideSW/Managers/RunTrackerCore.swift
   MintRideSW/Managers/StopwatchEngine.swift
   MintRideSW/Managers/TelemetryManager.swift
+  MintRideSW/Views/HistoryView.swift
   MintRideSW/Utilities/Formatters.swift
   MintRideSW/Views/BenchmarkTile.swift
   MintRideSW/Views/MainStopwatchView.swift
