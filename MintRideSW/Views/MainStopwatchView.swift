@@ -273,45 +273,98 @@ struct MainStopwatchView: View {
     }
 
     private func timerDisplay(fontSize: CGFloat) -> some View {
-        Text(StopwatchFormatter.format(stopwatch.elapsed))
+        let parts = StopwatchFormatter.components(stopwatch.elapsed)
+
+        return VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 0) {
+                timerUnit("H")
+                timerUnitSeparator(":")
+                timerUnit("m")
+                timerUnitSeparator(":")
+                timerUnit("s")
+                timerUnitSeparator(".")
+                timerUnit("ms")
+            }
+
+            HStack(spacing: 0) {
+                    timerSegment(parts.hours, fontSize: fontSize)
+                    timerSeparator(":", fontSize: fontSize)
+                    timerSegment(parts.minutes, fontSize: fontSize)
+                    timerSeparator(":", fontSize: fontSize)
+                    timerSegment(parts.seconds, fontSize: fontSize)
+                    timerSeparator(".", fontSize: fontSize)
+                    timerSegment(parts.centiseconds, fontSize: fontSize)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal, 22)
+                .padding(.vertical, 12)
+                .background {
+                    RoundedRectangle(cornerRadius: 28, style: .continuous)
+                        .fill(Color.primary.opacity(0.05))
+                }
+                .overlay(alignment: .leading) {
+                    GeometryReader { proxy in
+                        RoundedRectangle(cornerRadius: 28, style: .continuous)
+                            .fill(Color.accentColor.opacity(0.18))
+                            .frame(width: proxy.size.width * holdProgress(for: .timer))
+                    }
+                    .allowsHitTesting(false)
+                }
+                .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
+                .contentShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
+                .accessibilityLabel("Stopwatch \(StopwatchFormatter.format(stopwatch.elapsed))")
+                .onLongPressGesture(
+                    minimumDuration: 1,
+                    maximumDistance: 30,
+                    pressing: { isPressing in
+                        handleHoldChange(
+                            isPressing: isPressing,
+                            target: .timer,
+                            warning: "Keep holding to reset the main timer."
+                        )
+                    },
+                    perform: {
+                        stopwatch.reset()
+                        clearHoldState()
+                    }
+                )
+        }
+            .frame(maxWidth: .infinity)
+    }
+
+    private func timerSegment(_ value: String, fontSize: CGFloat) -> some View {
+        Text(value)
             .font(settings.timeFont.font(size: fontSize))
             .monospacedDigit()
             .foregroundStyle(.primary)
             .lineLimit(1)
             .minimumScaleFactor(0.35)
             .frame(maxWidth: .infinity)
-            .padding(.horizontal, 22)
-            .padding(.vertical, 20)
-            .background {
-                RoundedRectangle(cornerRadius: 28, style: .continuous)
-                    .fill(Color.primary.opacity(0.05))
-            }
-            .overlay(alignment: .leading) {
-                GeometryReader { proxy in
-                    RoundedRectangle(cornerRadius: 28, style: .continuous)
-                        .fill(Color.accentColor.opacity(0.18))
-                        .frame(width: proxy.size.width * holdProgress(for: .timer))
-                }
-                .allowsHitTesting(false)
-            }
-            .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
-            .contentShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
-            .accessibilityLabel("Stopwatch \(StopwatchFormatter.format(stopwatch.elapsed))")
-            .onLongPressGesture(
-                minimumDuration: 1,
-                maximumDistance: 30,
-                pressing: { isPressing in
-                    handleHoldChange(
-                        isPressing: isPressing,
-                        target: .timer,
-                        warning: "Keep holding to reset the main timer."
-                    )
-                },
-                perform: {
-                    stopwatch.reset()
-                    clearHoldState()
-                }
-            )
+    }
+
+    private func timerSeparator(_ value: String, fontSize: CGFloat) -> some View {
+        Text(value)
+            .font(settings.timeFont.font(size: fontSize * 0.62))
+            .monospacedDigit()
+            .foregroundStyle(.primary)
+            .lineLimit(1)
+            .minimumScaleFactor(0.35)
+            .baselineOffset(fontSize * 0.02)
+            .padding(.horizontal, 2)
+    }
+
+    private func timerUnit(_ value: String) -> some View {
+        Text(value)
+            .font(.caption2.weight(.semibold))
+            .foregroundStyle(.secondary)
+            .frame(maxWidth: .infinity)
+    }
+
+    private func timerUnitSeparator(_ value: String) -> some View {
+        Text(value)
+            .font(.caption2.weight(.semibold))
+            .foregroundStyle(.clear)
+            .padding(.horizontal, 2)
     }
 
     private var holdWarningBanner: some View {

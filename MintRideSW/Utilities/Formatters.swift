@@ -1,13 +1,23 @@
 import Foundation
 
 enum StopwatchFormatter {
-    static func format(_ interval: TimeInterval) -> String {
+    static func components(_ interval: TimeInterval) -> (hours: String, minutes: String, seconds: String, centiseconds: String) {
         let totalCentiseconds = Int((interval * 100).rounded(.down))
         let hours = totalCentiseconds / 360_000
         let minutes = (totalCentiseconds / 6_000) % 60
         let seconds = (totalCentiseconds / 100) % 60
         let centiseconds = totalCentiseconds % 100
-        return String(format: "%02d:%02d:%02d.%02d", hours, minutes, seconds, centiseconds)
+        return (
+            String(format: "%02d", hours),
+            String(format: "%02d", minutes),
+            String(format: "%02d", seconds),
+            String(format: "%02d", centiseconds)
+        )
+    }
+
+    static func format(_ interval: TimeInterval) -> String {
+        let parts = components(interval)
+        return "\(parts.hours):\(parts.minutes):\(parts.seconds).\(parts.centiseconds)"
     }
 
     static func formatBenchmark(_ interval: TimeInterval?) -> String {
