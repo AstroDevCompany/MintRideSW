@@ -71,6 +71,8 @@ test_files.each do |path|
 end
 
 app_group.new_file("Info.plist")
+assets_ref = app_group.new_file("Assets.xcassets")
+app_target.resources_build_phase.add_file_reference(assets_ref)
 
 app_target.build_configurations.each do |config|
   config.build_settings["PRODUCT_BUNDLE_IDENTIFIER"] = "com.luca.#{PROJECT_NAME}"
@@ -82,7 +84,7 @@ app_target.build_configurations.each do |config|
   config.build_settings["CURRENT_PROJECT_VERSION"] = "1"
   config.build_settings["MARKETING_VERSION"] = "1.0"
   config.build_settings["GENERATE_INFOPLIST_FILE"] = "NO"
-  config.build_settings["ASSETCATALOG_COMPILER_APPICON_NAME"] = ""
+  config.build_settings["ASSETCATALOG_COMPILER_APPICON_NAME"] = "AppIcon"
   config.build_settings["SWIFT_EMIT_LOC_STRINGS"] = "NO"
 end
 

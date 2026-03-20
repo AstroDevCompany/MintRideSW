@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "15D2C22D93BE134AD3CE070A"
+               BlueprintIdentifier = "1A96B7CAA9693ECE80402966"
                BuildableName = "MintRideSW.app"
                BlueprintName = "MintRideSW"
                ReferencedContainer = "container:MintRideSW.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "621AFAEA4D376FC2C9FDC27C"
+               BlueprintIdentifier = "CE015C70206AAA68ED78AFE4"
                BuildableName = "MintRideSWTests.xctest"
                BlueprintName = "MintRideSWTests"
                ReferencedContainer = "container:MintRideSW.xcodeproj">
@@ -41,12 +41,21 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1A96B7CAA9693ECE80402966"
+            BuildableName = "MintRideSW.app"
+            BlueprintName = "MintRideSW"
+            ReferencedContainer = "container:MintRideSW.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "621AFAEA4D376FC2C9FDC27C"
+               BlueprintIdentifier = "CE015C70206AAA68ED78AFE4"
                BuildableName = "MintRideSWTests.xctest"
                BlueprintName = "MintRideSWTests"
                ReferencedContainer = "container:MintRideSW.xcodeproj">
@@ -68,7 +77,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "15D2C22D93BE134AD3CE070A"
+            BlueprintIdentifier = "1A96B7CAA9693ECE80402966"
             BuildableName = "MintRideSW.app"
             BlueprintName = "MintRideSW"
             ReferencedContainer = "container:MintRideSW.xcodeproj">
@@ -81,6 +90,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1A96B7CAA9693ECE80402966"
+            BuildableName = "MintRideSW.app"
+            BlueprintName = "MintRideSW"
+            ReferencedContainer = "container:MintRideSW.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
