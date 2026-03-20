@@ -4,6 +4,12 @@ import Foundation
 
 @MainActor
 final class TelemetryManager: NSObject, ObservableObject {
+    private enum MotionTuning {
+        static let updateInterval = 1.0 / 50.0
+        static let smoothingFactor = 0.18
+        static let noiseFloorG = 0.015
+    }
+
     @Published private(set) var authorizationStatus: CLAuthorizationStatus
     @Published private(set) var currentSpeedMPS: Double = 0
     @Published private(set) var peakSpeedMPS: Double = 0
@@ -23,6 +29,7 @@ final class TelemetryManager: NSObject, ObservableObject {
     private var cumulativeDistanceMeters: Double = 0
     private var sessionDistanceOrigin: Double = 0
     private var lastLocation: CLLocation?
+    private var smoothedAccelerationG: Double = 0
 
     init(unit: DisplayUnit) {
         authorizationStatus = locationManager.authorizationStatus
@@ -78,6 +85,7 @@ final class TelemetryManager: NSObject, ObservableObject {
         sessionDistanceOrigin = cumulativeDistanceMeters
         sessionDistanceMeters = 0
         peakSpeedMPS = 0
+        peakAccelerationG = 0
         isRunActive = false
     }
 
@@ -118,8 +126,11 @@ final class TelemetryManager: NSObject, ObservableObject {
 
         guard !motionManager.isDeviceMotionActive else { return }
 
-        motionManager.deviceMotionUpdateInterval = 1.0 / 30.0
-        motionManager.startDeviceMotionUpdates(to: .main) { [weak self] motion, error in
+        motionManager.deviceMotionUpdateInterval = MotionTuning.updateInterval
+        motionManager.startDeviceMotionUpdates(
+            using: preferredMotionReferenceFrame,
+            to: .main
+        ) { [weak self] motion, error in
             guard let self else { return }
 
             if let error {
@@ -132,11 +143,46 @@ final class TelemetryManager: NSObject, ObservableObject {
                 return
             }
 
-            let launchG = hypot(motion.userAcceleration.x, motion.userAcceleration.y)
-            accelerationG = launchG
-            peakAccelerationG = max(peakAccelerationG, launchG)
-            motionStatusText = "Accel live"
+            let horizontalAccelerationG = filteredHorizontalAcceleration(from: motion)
+            accelerationG = horizontalAccelerationG
+            peakAccelerationG = max(peakAccelerationG, horizontalAccelerationG)
+            motionStatusText = "Accel filtered"
         }
+    }
+
+    private var preferredMotionReferenceFrame: CMAttitudeReferenceFrame {
+        let available = CMMotionManager.availableAttitudeReferenceFrames()
+
+        if available.contains(.xArbitraryCorrectedZVertical) {
+            return .xArbitraryCorrectedZVertical
+        }
+
+        if available.contains(.xArbitraryZVertical) {
+            return .xArbitraryZVertical
+        }
+
+        if available.contains(.xMagneticNorthZVertical) {
+            return .xMagneticNorthZVertical
+        }
+
+        return .xTrueNorthZVertical
+    }
+
+    private func filteredHorizontalAcceleration(from motion: CMDeviceMotion) -> Double {
+        let rotation = motion.attitude.rotationMatrix
+        let userAcceleration = motion.userAcceleration
+
+        // Rotate device-space acceleration into a stable frame, then ignore vertical motion.
+        let worldX = rotation.m11 * userAcceleration.x + rotation.m12 * userAcceleration.y + rotation.m13 * userAcceleration.z
+        let worldY = rotation.m21 * userAcceleration.x + rotation.m22 * userAcceleration.y + rotation.m23 * userAcceleration.z
+        var horizontalG = hypot(worldX, worldY)
+
+        if horizontalG < MotionTuning.noiseFloorG {
+            horizontalG = 0
+        }
+
+        smoothedAccelerationG += (horizontalG - smoothedAccelerationG) * MotionTuning.smoothingFactor
+        return smoothedAccelerationG
     }
 }
 
